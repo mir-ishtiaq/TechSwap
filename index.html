@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechSwap</title>
+  <!-- Link to Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<script>
+  // Function to make an API call
+  async function makeAPICall(url, method, data = null) {
+    try {
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: data ? JSON.stringify(data) : null,
+      });
+
+      const responseData = await response.json();
+      return responseData;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  // Example usage of the API call function
+  // Replace 'http://localhost:3000' with the appropriate URL of your backend server
+  const apiUrl = 'http://localhost:3000';
+
+  // Example: Register a user
+  const registerUser = async (username, password) => {
+    const userData = { username, password };
+    const response = await makeAPICall(`${apiUrl}/register`, 'POST', userData);
+    console.log(response);
+  };
+
+  // Call the function with appropriate arguments
+  // Example: registerUser('testuser', 'password123');
+
+</script>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">TechSwap</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Listings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container mt-5">
+    <h1>Welcome to TechSwap</h1>
+    <p>Find great deals on used electronics!</p>
+    <!-- Inside the <div class="container mt-5"> element -->
+<div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="images/phone.jpg" class="card-img-top" alt="Product Image 1">
+        <div class="card-body">
+          <h5 class="card-title">Smartphone Model X</h5>
+          <p class="card-text">$299.99</p>
+          <a href="#" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="images/laptop.jpg" class="card-img-top" alt="Product Image 2">
+        <div class="card-body">
+          <h5 class="card-title">Laptop Model Y</h5>
+          <p class="card-text">$799.99</p>
+          <a href="#" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="images/headphone.jpg" class="card-img-top" alt="Product Image 3">
+        <div class="card-body">
+          <h5 class="card-title">Headphones Model Z</h5>
+          <p class="card-text">$99.99</p>
+          <a href="#" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+
+  <!-- Link to Bootstrap JS (for dropdowns and toggler) and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
